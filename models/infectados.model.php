@@ -48,7 +48,7 @@ class InfectadosModel {
 
 		$f = fopen('infectados.csv','w+');
 		$array = json_decode(file_get_contents($url),true);
-
+		//print_r($array);
 		//var_dump($array);
 		$final = [];
 		foreach($array as $persona){
@@ -122,7 +122,7 @@ class InfectadosModel {
 			  //echo $persona->name->first;
 			  
         }
-*/
+
 
 
 		$rs = mysqli_query(self::$instancia->conn, $sql);
@@ -133,7 +133,7 @@ class InfectadosModel {
 
 		return $rs;
 	}
-
+*/
 
 	
 
