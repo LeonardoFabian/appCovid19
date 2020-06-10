@@ -1,0 +1,40 @@
+/*
+INFECTED
+----------
+id
+firstname
+lastname
+gender
+birthday
+age
+nationality (bandera del pais)
+email
+phone
+cell
+street
+hnumber
+latitude DECIMAL(9,6)
+longitude DECIMAL(9,6)
+pic_thumbnail
+pic_large
+*/
+
+CREATE TABLE `covid19`.`infected` ( 
+`id` INT NOT NULL AUTO_INCREMENT , 
+`firstname` TEXT NOT NULL , 
+`lastname` TEXT NOT NULL , 
+`gender` TEXT NOT NULL , 
+`birthday` DATE NOT NULL , 
+`age` INT NOT NULL , 
+`nationality` TEXT NOT NULL , 
+`email` TEXT NOT NULL , 
+`phone` TEXT NOT NULL , 
+`cell` TEXT NOT NULL , 
+`street` TEXT NOT NULL , 
+`hnumber` INT NOT NULL , 
+`latitude` DECIMAL(9,6) NOT NULL , 
+`longitude` DECIMAL(9,6) NOT NULL , 
+`pic_thumbnail` TEXT NOT NULL , 
+`pic_large` TEXT NOT NULL , 
+PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
