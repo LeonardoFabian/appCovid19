@@ -17,7 +17,7 @@ class InfectadosController{
 
 	static public function ctrInsertarNuevosInfectados(){
 
-		$url = "https://randomuser.me/api/?results=2";
+		$url = "https://randomuser.me/api/?results=100";
 		//$table = "infected";
 		
 		$result = InfectadosModel::generarCSV($url);

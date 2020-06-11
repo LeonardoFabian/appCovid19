@@ -47,8 +47,10 @@ class InfectadosModel {
 	static public function generarCSV($url){
 
 		$f = fopen('infectados.csv','w+');
-		$array = json_decode(file_get_contents($url),true);
-		print_r($array);
+		$datos = file_get_contents($url);
+		$datos = json_decode($datos);
+		//$array = json_decode(file_get_contents($url),true);
+		//print_r($datos);
 		//var_dump($array);
 /*
 		foreach($array as $key => $value){
@@ -62,37 +64,47 @@ class InfectadosModel {
 */
 
 		$final = [];
-		foreach($array as $persona){
-			$name = $persona->name->first;
-			//var_dump($name);
-			$lastname = $persona->name->last;	
-			$gender = $persona->gender;
-			$bday = $persona->dob->date;
-			$age = $persona->dob->age;
-			$country = $persona->country;
-			$nat = $persona->nat;
-			$email = $persona->email;
-			$phone = $persona->phone;
-			$cell = $persona->cell;
-			$street = $persona->location->street->name;
-			$snumber = $persona->location->street->number;
-			$lat = $persona->coordinates->latitude;
-			$long = $persona->coordinates->longitude;
-			$thumb = $persona->picture->thumbnail;
-			$picLg = $persona->picture->large;
 
-			$final = array("firstname" => $name,"lastname" => $lastname,"gender" => $gender,"birthday" => $bday,"age" => $age,"country" => $country,"nationality" => $nat,"email" => $email,"phone" => $phone,"cell" => $cell,"street" => $street,"hnumber" => $snumber,"latitude" => $lat,"longitude" => $long,"pic_thumbnail" => $thumb,"pic_large" => $picLg);
+		if (is_array($datos) || is_object($datos))
+		{
+			foreach ($datos as $persona)
+			//print_r($persona);
+			{
+				for($i = 0; $i < count( $persona ); $i++){
+					$name = $persona[$i]->name->first;
+					//echo($name);
+					$lastname = $persona[$i]->name->last;	
+					$gender = $persona[$i]->gender;
+					$bday = $persona[$i]->dob->date;
+					$age = $persona[$i]->dob->age;
+					$country = $persona[$i]->country;
+					$nat = $persona[$i]->nat;
+					$email = $persona[$i]->email;
+					$phone = $persona[$i]->phone;
+					$cell = $persona[$i]->cell;
+					$street = $persona[$i]->location->street->name;
+					$snumber = $persona[$i]->location->street->number;
+					$lat = $persona[$i]->coordinates->latitude;
+					$long = $persona[$i]->coordinates->longitude;
+					$thumb = $persona[$i]->picture->thumbnail;
+					$picLg = $persona[$i]->picture->large;
 
-		}
+					$final[$i] = array($name,$lastname,$gender,$bday,$age,$country,$nat,$email,$phone,$cell,$street,$snumber,$lat,$long,$thumb,$picLg);
+					//$final[$i] = array("firstname" => $name,"lastname" => $lastname,"gender" => $gender,"birthday" => $bday,"age" => $age,"country" => $country,"nationality" => $nat,"email" => $email,"phone" => $phone,"cell" => $cell,"street" => $street,"hnumber" => $snumber,"latitude" => $lat,"longitude" => $long,"pic_thumbnail" => $thumb,"pic_large" => $picLg);
 
-		array_unshift($final,['firstname','lastname','gender','birthday','age','country','nationality','email','phone','cell','street','hnumber','latitude','longitude','pic_thumbnail','pic_large']);
+				}		
+				array_unshift($final,['firstname','lastname','gender','birthday','age','country','nationality','email','phone','cell','street','hnumber','latitude','longitude','pic_thumbnail','pic_large']);
+				
+				foreach($final as $key){
+					//var_dump($persona->name->first);			
 		
-		foreach($final as $key){
-			//var_dump($persona->name->first);			
-
-			fputcsv($f, $key);
+					fputcsv($f, $key);
+				}
+				fclose($f);
+			}
+			
 		}
-		fclose($f);
+
 	}
 
 /*
