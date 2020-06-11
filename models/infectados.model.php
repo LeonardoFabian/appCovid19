@@ -48,12 +48,23 @@ class InfectadosModel {
 
 		$f = fopen('infectados.csv','w+');
 		$array = json_decode(file_get_contents($url),true);
-		//print_r($array);
+		print_r($array);
 		//var_dump($array);
+/*
+		foreach($array as $key => $value){
+			echo $value['name']['first']."<br>";
+		}
+		*/
+/*
+		for ($i = 0; $i < count( $array ); $i++){
+			echo $array[$i]->gender;
+		}
+*/
+
 		$final = [];
 		foreach($array as $persona){
 			$name = $persona->name->first;
-			var_dump($name);
+			//var_dump($name);
 			$lastname = $persona->name->last;	
 			$gender = $persona->gender;
 			$bday = $persona->dob->date;
@@ -70,7 +81,7 @@ class InfectadosModel {
 			$thumb = $persona->picture->thumbnail;
 			$picLg = $persona->picture->large;
 
-			$final = array($name,$lastname,$gender,$bday,$age,$country,$nat,$email,$phone,$cell,$street,$snumber,$lat,$long,$thumb,$picLg);
+			$final = array("firstname" => $name,"lastname" => $lastname,"gender" => $gender,"birthday" => $bday,"age" => $age,"country" => $country,"nationality" => $nat,"email" => $email,"phone" => $phone,"cell" => $cell,"street" => $street,"hnumber" => $snumber,"latitude" => $lat,"longitude" => $long,"pic_thumbnail" => $thumb,"pic_large" => $picLg);
 
 		}
 
