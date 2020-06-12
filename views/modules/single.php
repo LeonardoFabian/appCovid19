@@ -16,17 +16,14 @@
     <!-- Main content -->
     <section class="content">
       <h1>
-        COVID-19
-        <small>| Detalles del Infectado</small>
+        COVID-19        
       </h1>
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <!-- btn add-solicitud -->        
-
-            <button class="btn btn-primary" onclick="">Sincronizar</button>         
-          
-          <!-- /btn add-solicitud -->
+          <!-- titulo -->                 
+          <h2>Datos del Infectado</h2>
+          <!-- /titulo -->
         </div>
         <div class="box-body">
           <!-- solicitudes datatable -->

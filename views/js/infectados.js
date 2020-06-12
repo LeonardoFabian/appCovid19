@@ -208,7 +208,7 @@ $(document).on("click", ".btnMostrarDetalles", function(){
 	});
 
 	/* Generar Lista de Infectados */
-
+/*
 $(document).on("click", ".btnGenerarCSV", function(){
 
 	alert('<?php echo InfectadosController::ctrInsertarNuevosInfectados(); ?>');
@@ -218,4 +218,4 @@ $(document).on("click", ".btnGenerarCSV", function(){
 	
 	});
 
-
+*/

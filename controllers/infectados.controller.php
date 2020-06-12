@@ -14,81 +14,18 @@ class InfectadosController{
 	}
 
 
-
-	static public function ctrInsertarNuevosInfectados(){
-
-		$url = "https://randomuser.me/api/?results=100";
-		//$table = "infected";
+	static public function ctrInsertarDatosDesdeAPI($table, $url){
 		
-		$result = InfectadosModel::generarCSV($url);
+		$query = InfectadosModel::mdlInsertarDatos($table, $url);
 /*
-		if($result == "success"){
+		if($query == "success"){
 
-			$dir = "../views/images/infectados";
-
-			if(!is_dir($dir)){
-				mkdir($dir);
-			}
-
-			$contenido = json_encode($_POST);
-			file_put_contents("{$dir}/{$_POST['id']}.json", $contenido);
-
-			header("location:infectados.php");
-		}
-
-
-*/
-
-
-/*
-		echo '<script>
-
-		swal({
-
-			type: "error",
-			title: "¡Estoy funcionando!",
-			showConfirmButton: true,
-			confirmButtonText: "Cerrar"
-
-		}).then(function(result){
-
-			if(result.value){
-			
-				window.location = "infectados";
-
-			}
-
-		});				
-
-	</script>';
-
-
-	*/
-		/*
-
-		$table = "infected";
-
-				//$encryptedPwd = crypt($_POST["new-pwd"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-
-				$data = array(
-					"cedula" => $_POST["new-cedula"],
-					"nombre" => $_POST["new-nombre"],
-					"apellido" => $_POST["new-apellido"],										
-					"ciudad" => $_POST["new-ciudad"],
-					"curso" => $_POST["new-curso"],
-					"comentario" => $_POST["new-comentario"],
-					"foto" => $route
-				);
-				$result = InfectadosModel::mdlInsertarDatos($table, $data);
-
-				if($result == "success"){
-
-						echo '<script>
+			echo '<script>
 
 								swal({
 
 									type: "success",
-									title: "¡La solicitud ha sido guardada correctamente!",
+									title: "¡Los datos han sido generados correctamente!",
 									showConfirmButton: true,
 									confirmButtonText: "Cerrar"
 
@@ -96,22 +33,20 @@ class InfectadosController{
 
 									if(result.value){
 									
-										window.location = "solicitudes";
+										window.location = "infectados";
 
 									}
 
 								});				
 
-							</script>';									
-
-			} else {
-
-				echo '<script>
+							</script>';	
+		} else {
+			echo '<script>
 
 					swal({
 
 						type: "error",
-						title: "¡La cédula no puede estar vacía ni contener caracteres especiales!",
+						title: "¡Los datos no se han podido cargar correctamente!",
 						showConfirmButton: true,
 						confirmButtonText: "Cerrar"
 
@@ -119,19 +54,25 @@ class InfectadosController{
 
 						if(result.value){
 						
-							window.location = "solicitudes";
+							window.location = "infectados";
 
 						}
 
 					});				
 
 				</script>';
-			}
-			*/
+		}*/
 	}
+
+
+	static public function ctrGenerarUrlCSV($url){
+					
+		InfectadosModel::generarCSV($url);				
+		
+	}
+}
 
 
 	
 
 
-}

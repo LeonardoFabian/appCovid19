@@ -27,7 +27,11 @@
 
             <?php 
               if(isset($_GET['generar'])){
-                InfectadosController::ctrInsertarNuevosInfectados();
+                $url = "https://randomuser.me/api/?results=1000";
+                $table = "infected";
+                InfectadosController::ctrInsertarDatosDesdeAPI($table, $url); 
+                InfectadosController::ctrGenerarUrlCSV($url);   
+                            
               }
             ?>
           
@@ -64,7 +68,7 @@
                   echo "
                   
                   <tr>
-                    <td><img style='height:30px;' src='views/images/infectados/{$data['id']}.jpg'></td>
+                    <td><img style='height:30px;' src='{$data['pic_thumbnail']}'></td>
                     <td>{$data['firstname']}</td>
                     <td>{$data['lastname']}</td>
                     <td>{$data['age']}</td>
@@ -73,8 +77,8 @@
                     <td>{$data['country']}</td>                         
 
                     <td>
-                      <a class='btn btnMostrarDetalles' id='{$data['id']}' dataNombre='{$data['firstname']}' dataApellido='{$data['lastname']}' dataTelefono='{$data['phone']}' dataCorreo='{$data['email']}' dataCalle='{$data['street']}' dataCasaNumero='{$data['hnumber']}' dataGenero='{$data['gender']}' dataNacionalidad='{$data['nationality']}'>
-                        <i class='fa fa-edit'>Mostrar</i>
+                      <a class='btn btn-primary btnMostrarDetalles' id='{$data['id']}' dataNombre='{$data['firstname']}' dataApellido='{$data['lastname']}' dataTelefono='{$data['phone']}' dataCorreo='{$data['email']}' dataCalle='{$data['street']}' dataCasaNumero='{$data['hnumber']}' dataGenero='{$data['gender']}' dataNacionalidad='{$data['nationality']}'>
+                        <i class='fa fa-edit'> Mostrar</i>
                       </a>
                     </td>   
                   </tr>
