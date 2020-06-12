@@ -44,9 +44,7 @@
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
 
 <!-- Site wrapper -->
-  <?php
-
-  
+  <?php  
 
       echo '<div class="wrapper">';
 
@@ -69,9 +67,7 @@
       
       include "modules/footer.php";
 
-    echo '</div>';
-
-    
+    echo '</div>';    
 
   ?>
 <!-- ./wrapper -->
@@ -94,7 +90,6 @@
 <!-- DataTable Responsive -->
 <script src="views/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
 <script src="views/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
-
 
 <script src="views/js/template.js"></script>
 <script src="views/js/infectados.js"></script>

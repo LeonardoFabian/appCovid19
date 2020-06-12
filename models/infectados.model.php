@@ -184,17 +184,19 @@ class InfectadosModel {
 						$success = InfectadosModel::query($sql);
 						//$success = true;
 						if($success){
-							$resultQuery = "success";
+							$resultQuery = true;
 						} else {
-							$resultQuery = "error";
+							$resultQuery = false;
 						}						
 						
 					}
+
 					return $resultQuery;
+					
 				}
 				
 			}         
-
+			
 	}
 
 	static public function obtenerSignoZodiacal($bday){    

@@ -61,9 +61,7 @@
             </thead>
             <tbody >
 
-              <?php 
-
-                
+              <?php                 
 
                 $datos = InfectadosController::ctrMostrarInfectados();                 
                
@@ -81,7 +79,7 @@
                     <td>{$data['age']}</td>
                     <td>{$data['signo_zodiacal']}</td>
                     <td><i class='{$data['simbolo_zodiacal']}'></i></td>
-                    <td>{$data['country']}</td>                         
+                    <td><img src='views/images/flags/{$data['country']}.png' style='width:30px;height:30px;' title='{$data['country']}'></td>                         
 
                     <td>
                       <a class='btn btn-info btnMostrarDetalles' id='{$data['id']}' dataNombre='{$data['firstname']}' dataApellido='{$data['lastname']}' dataTelefono='{$data['phone']}' dataCorreo='{$data['email']}' dataCalle='{$data['street']}' dataCasaNumero='{$data['hnumber']}' dataGenero='{$data['gender']}' dataNacionalidad='{$data['nationality']}' dataFoto='{$data['pic_large']}' dataLatitud='{$data['latitude']}' dataLongitud='{$data['longitude']}'>
@@ -93,8 +91,7 @@
                   ";
                 }
 
-              ?>
-               
+              ?>             
               
 
             </tbody>

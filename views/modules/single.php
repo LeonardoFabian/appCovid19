@@ -28,7 +28,6 @@
         <div class="box-body">
           <!-- solicitudes datatable -->
                 <?php 
-
                 
                 if(isset($_GET['id'])){
                     
@@ -44,10 +43,7 @@
                     $foto = $_GET['foto'];
                     $latitud = $_GET['latitud'];
                     $longitud = $_GET['longitud'];
-                }
-                //echo "<h1>{$nombre}</h1>";                   
-                                            
-                
+                }                                                                            
                  
                   echo "                                                     
                   
@@ -102,7 +98,6 @@
                     </form>                    
                     </div>
 
-
                     <div id='gmap' style='width:100%;height:400px;'>Cargando mapa...</div>
                     <script type='text/javascript' src='https://maps.google.com/maps/api/js?key=AIzaSyAT4kzxuq0u3jlUxjh5mlawcgDtAkwZA9k'></script> 
                     <script type='text/javascript'>
@@ -122,12 +117,7 @@
                        google.maps.event.addDomListener(window, 'load', init_map);
                     </script> 
 
-
-
-
-
-                  ";
-                
+                  ";               
 
               ?>
                
