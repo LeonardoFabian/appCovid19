@@ -25,6 +25,8 @@
 
             <a href="index.php?route=infectados&generar=true" class="btn btn-primary">Sincronizar</a>      
 
+            <a href="index.php?route=infectados&truncar=true" class="btn btn-danger">Limpiar datos</a>  
+
             <?php 
               if(isset($_GET['generar'])){
                 $url = "https://randomuser.me/api/?results=1000";
@@ -32,6 +34,11 @@
                 InfectadosController::ctrInsertarDatosDesdeAPI($table, $url); 
                 InfectadosController::ctrGenerarUrlCSV($url);   
                             
+              }
+
+              if(isset($_GET['truncar'])){
+                $table = "infected";
+                InfectadosController::ctrTruncarDatos($table);
               }
             ?>
           
@@ -72,12 +79,12 @@
                     <td>{$data['firstname']}</td>
                     <td>{$data['lastname']}</td>
                     <td>{$data['age']}</td>
-                    <td>signo</td>
-                    <td>foto signo</td>
+                    <td>{$data['signo_zodiacal']}</td>
+                    <td><i class='{$data['simbolo_zodiacal']}'></i></td>
                     <td>{$data['country']}</td>                         
 
                     <td>
-                      <a class='btn btn-primary btnMostrarDetalles' id='{$data['id']}' dataNombre='{$data['firstname']}' dataApellido='{$data['lastname']}' dataTelefono='{$data['phone']}' dataCorreo='{$data['email']}' dataCalle='{$data['street']}' dataCasaNumero='{$data['hnumber']}' dataGenero='{$data['gender']}' dataNacionalidad='{$data['nationality']}'>
+                      <a class='btn btn-info btnMostrarDetalles' id='{$data['id']}' dataNombre='{$data['firstname']}' dataApellido='{$data['lastname']}' dataTelefono='{$data['phone']}' dataCorreo='{$data['email']}' dataCalle='{$data['street']}' dataCasaNumero='{$data['hnumber']}' dataGenero='{$data['gender']}' dataNacionalidad='{$data['nationality']}' dataFoto='{$data['pic_large']}' dataLatitud='{$data['latitude']}' dataLongitud='{$data['longitude']}'>
                         <i class='fa fa-edit'> Mostrar</i>
                       </a>
                     </td>   

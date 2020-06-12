@@ -41,17 +41,20 @@
                     $numero = $_GET['numero'];
                     $genero = $_GET['genero'];
                     $nacionalidad = $_GET['nacionalidad'];
+                    $foto = $_GET['foto'];
+                    $latitud = $_GET['latitud'];
+                    $longitud = $_GET['longitud'];
                 }
                 //echo "<h1>{$nombre}</h1>";                   
                                             
                 
                  
-                  echo "
+                  echo "                                                     
                   
-                    <div class='row'>
-                        <img style='height:30px;' src='views/images/infectados/{$id}.jpg'>
-                    </div>                  
-                  
+                    <div class='text-left' style='margin:50px;'>
+                      <img src='{$foto}' class='rounded' alt='Foto de {$nombre} {$apellido}' title='Foto de {$nombre} {$apellido}'>
+                    </div>
+                    <div style='margin:50px;'>
 
                     <form>
                         <div class='form-row'>
@@ -96,7 +99,29 @@
                                 <p id='nationality' style='text-transform:uppercase'>{$nacionalidad}</p>
                             </div>
                         </div>
-                    </form>
+                    </form>                    
+                    </div>
+
+
+                    <div id='gmap' style='width:100%;height:400px;'>Cargando mapa...</div>
+                    <script type='text/javascript' src='https://maps.google.com/maps/api/js?key=AIzaSyAT4kzxuq0u3jlUxjh5mlawcgDtAkwZA9k'></script> 
+                    <script type='text/javascript'>
+                       function init_map() {
+                          var options = {
+                             zoom: 14,
+                             center: new google.maps.LatLng({$latitud}, {$longitud}),
+                             mapTypeId: google.maps.MapTypeId.ROADMAP
+                          };
+                          map = new google.maps.Map($('#gmap')[0], options);
+                          marker = new google.maps.Marker({
+                             map: map,
+                             position: new google.maps.LatLng({$latitud}, {$longitud})
+                          });                        
+                          
+                       }
+                       google.maps.event.addDomListener(window, 'load', init_map);
+                    </script> 
+
 
 
 

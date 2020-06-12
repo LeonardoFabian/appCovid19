@@ -70,6 +70,12 @@ class InfectadosController{
 		InfectadosModel::generarCSV($url);				
 		
 	}
+
+	static public function ctrTruncarDatos($table){
+		$sql = "truncate table {$table}";
+		$datos = InfectadosModel::query($sql);
+	}
+	
 }
 
 

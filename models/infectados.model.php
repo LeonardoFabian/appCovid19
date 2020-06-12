@@ -128,11 +128,55 @@ class InfectadosModel {
 						$thumb = $persona[$i]->picture->thumbnail;
 						$picLg = $persona[$i]->picture->large;
 
+						$signoZodiacal = InfectadosModel::obtenerSignoZodiacal($bday);
+
+						switch ($signoZodiacal){
+							case "Aries":
+								$simboloZodiacal = "ai aries";
+							break;
+							case "Tauro":
+								$simboloZodiacal = "ai taurus";
+							break;
+							case "Géminis":
+								$simboloZodiacal = "ai gemini";
+							break;
+							case "Cáncer":
+								$simboloZodiacal = "ai cancer";
+							break;
+							case "Leo":
+								$simboloZodiacal = "ai leo";
+							break;
+							case "Virgo":
+								$simboloZodiacal = "ai virgo";
+							break;
+							case "Libra":
+								$simboloZodiacal = "ai libra";
+							break;
+							case "Escorpio":
+								$simboloZodiacal = "ai scorpio";
+							break;
+							case "Sagitario":
+								$simboloZodiacal = "ai sagittarius";
+							break;
+							case "Capricornio":
+								$simboloZodiacal = "ai capricorn";
+							break;
+							case "Acuario":
+								$simboloZodiacal = "ai aquarius";
+							break;
+							case "Piscis":
+								$simboloZodiacal = "ai pisces";
+							break;
+							default:
+								$simboloZodiacal = "";
+							break;
+						}
+
 						$sql = "
 						insert into $table
-						(firstname, lastname, gender, birthday, age, country, nationality, email, phone, cell, street, hnumber, latitude, longitude, pic_thumbnail, pic_large ) 
+						(firstname, lastname, gender, birthday, signo_zodiacal, simbolo_zodiacal, age, country, nationality, email, phone, cell, street, hnumber, latitude, longitude, pic_thumbnail, pic_large ) 
 						VALUES 
-						('{$name}', '{$lastname}', '{$gender}', '{$bday}', {$age}, '{$country}','{$nat}', '{$email}', '{$phone}', '{$cell}', '{$street}', {$snumber}, {$lat}, {$long}, '{$thumb}', '{$picLg}')
+						('{$name}', '{$lastname}', '{$gender}', '{$bday}', '{$signoZodiacal}','{$simboloZodiacal}', {$age}, '{$country}','{$nat}', '{$email}', '{$phone}', '{$cell}', '{$street}', {$snumber}, {$lat}, {$long}, '{$thumb}', '{$picLg}')
 						";
 
 						echo $sql."<br>";
@@ -152,6 +196,66 @@ class InfectadosModel {
 			}         
 
 	}
+
+	static public function obtenerSignoZodiacal($bday){    
+		$f = $bday; 
+		
+		if($f != null && $f != ""){
+			$mesStr = substr($f, 5, 2);
+			$diaStr = substr($f, 8, 2);
+			//$spl = str_split('-', $subStr);    				
+	
+			//$mes = intval($spl[1]);			
+			//$dia = intval($spl[2]);
+
+			$mes = intval($mesStr);
+			$dia = intval($diaStr);
+
+			echo "mes {$mes} dia {$dia}";
+		
+			if(($dia >= 21 && $mes == 3) || ($dia <= 20 && $mes == 4)){
+				$text = 'Aries';
+			}
+			else if(($dia >= 21 && $mes == 4) || ($dia <= 20 && $mes == 5)){
+				$text = 'Tauro';
+			}
+			else if(($dia >= 21 && $mes == 5) || ($dia <= 21 && $mes == 6)){
+				$text = 'Géminis';
+			}
+			else if(($dia >= 22 && $mes == 6) || ($dia <= 22 && $mes == 7)){
+				$text = 'Cáncer';
+			}
+			else if(($dia >= 23 && $mes == 7) || ($dia <= 22 && $mes == 8)){
+				$text = 'Leo';
+			}
+			else if(($dia >= 23 && $mes == 8) || ($dia <= 22 && $mes == 9)){
+				$text = 'Virgo';
+			}
+			else if(($dia >= 23 && $mes == 9) || ($dia <= 22 && $mes == 10)){
+				$text = 'Libra';
+			}
+			else if(($dia >= 23 && $mes == 10) || ($dia <= 22 && $mes == 11)){
+				$text = 'Escorpio';
+			}
+			else if(($dia >= 23 && $mes == 11) || ($dia <= 21 && $mes == 12)){
+				$text = 'Sagitario';
+			}
+			else if(($dia >= 22 && $mes == 12) || ($dia <= 20 && $mes == 1)){
+				$text = 'Capricornio';
+			}
+			else if(($dia >= 21 && $mes == 1) || ($dia <= 18 && $mes == 2)){
+				$text = 'Acuario';
+			}
+			else if(($dia >= 19 && $mes == 2) || ($dia <= 20 && $mes == 3)){
+				$text = 'Piscis';
+			}
+		}
+		else{
+			$text = '';
+		}
+		
+		return $text;
+	}               
 
 
 }
